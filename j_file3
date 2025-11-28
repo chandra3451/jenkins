@@ -4,7 +4,7 @@ n1=10
 n2=20
 
 if [ $n1 -gt $n2 ]; then
-  echo " $n1 is greater than $2"
+  echo "$n1 is greater than $2"
 else
   echo "$n2 is grater than $n1"
 fi
