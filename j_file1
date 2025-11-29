@@ -1,21 +1,21 @@
 pipeline {
- agent {
-  label 'lable1'
-}
-
+ 
   stages {
     stage('checkout') {
+      agent any
         steps {
-          checkout scm
+          echo "checkout"
       }   
 }
 
 stage('test') {
+ agent { label 'label1' }
   steps {
       echo "runnig test" 
   }
 }
 stage('deploy') {
+  agent { label 'label2' }
   steps {
       echo "runnig deploy" 
   }
