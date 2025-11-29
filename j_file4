@@ -1,10 +1,51 @@
-pipepline {
-  agent any;
- stages {
-    stage {'build'} {
-       steps {
-          echo "this is build stage"
-}
-}
-}
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the Git repository
+                git url: 'https://github.com/your-org/your-repo.git',
+                    credentialsId: 'your-git-credentials-id', // Optional, if repository is private
+                    branch: 'main'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Example build command
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Example test command
+                sh 'mvn test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Example deployment command
+                sh 'mvn deploy'
+            }
+        }
+
+        stage('Push Changes (Optional)') {
+            steps {
+                script {
+                    // Example of pushing changes back to Git
+                    // This assumes you have modified files and want to commit/push them
+                    withCredentials([gitUsernamePassword(credentialsId: 'your-git-credentials-id', gitToolName: 'Default')]) {
+                        sh '''
+                            git add .
+                            git commit -m "Automated commit from Jenkins pipeline"
+                            git push origin HEAD
+                        '''
+                    }
+                }
+            }
+        }
+    }
 }
