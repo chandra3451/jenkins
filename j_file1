@@ -8,9 +8,14 @@ pipeline {
       }   
 }
 
-stage('deploy') {
+stage('test') {
   steps {
       echo "runnig test" 
+  }
+}
+stage('deploy') {
+  steps {
+      echo "runnig deploy" 
   }
 }
 }
