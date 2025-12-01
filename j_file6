@@ -7,5 +7,16 @@ pipeline {
           echo "this is buils first"
 }
 }
+stage ('Test' ) {
+      steps {
+          echo "this is buils first"
+}
+}
+stage ('Deploy' ) {
+      steps {
+          echo "this is buils first"
+}
+}
+
 }
 }
