@@ -5,16 +5,19 @@ pipeline {
      stage ('BUILD' ) {
       steps {
           echo "this is buils first"
+           sh 'sleep 5'
 }
 }
 stage ('Test' ) {
       steps {
           echo "this is buils first"
+           sh 'sleep 5'
 }
 }
 stage ('Deploy' ) {
       steps {
           echo "this is buils first"
+            sh 'sleep 5'
 }
 }
 
